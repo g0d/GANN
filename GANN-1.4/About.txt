@@ -1,0 +1,109 @@
+------------------------------------------------------------------------------
+             ***** Geeks Artificial Neural Network (G.A.N.N) *****
+------------------------------------------------------------------------------
+==============================================================================
+			Conformed To GNU/GPL Licence
+==============================================================================
+
+		       Developed by George Delaportas
+
+			    Copyright (C) 2008
+
+
+
+------------------------------------------------------------------------------
+			   *** About G.A.N.N ***
+------------------------------------------------------------------------------
+
+G.A.N.N is a platform that uses the "Learning By Example" method.
+G.A.N.N is a project that started with the "Black Box" philosophy in 
+mind and wants to achieve the creation of a centralized and unified core 
+that is based on an Advanced Neural Network design and performs all the
+needed functions and procedures automatically.
+G.A.N.N just like the "Black Box" has Inputs and Outputs and can be 
+either Feed-Forward or Feed-Forward with Feedback and offers numerous
+capabilities such as pattern recognition and numbers prediction.
+
+Test it and feel free to tell us your comments and suggestions at:
+g.delaportas@gmail.com
+
+Enjoy!
+
+
+
+------------------------------------------------------------------------------
+			   *** G.A.N.N Files ***
+------------------------------------------------------------------------------
+
+[/] - Misc Files
+01.About.txt:			This File
+02.COPYING:			GNU/GPL Version 3
+03.Install:			Installer
+04.GANN:                	Geeks Binary File (Auto Generated)
+04.GIOD:                	Geeks I/O Distribution (Auto Generated)
+06.GMap:			Geeks Map (Auto Generated) [Temporary]
+07.GKDB:			Geeks Knowledge Data Base (Auto Generated)
+08.GHT:				Geeks Hash Table (Auto Generated)
+09.GRegs:			Geeks Registrations (Auto Generated)
+10.GSims:			Geeks Simulations (Auto Generated)
+
+
+
+[src/] - C++ Files
+01.gmain.cpp:			Geeks Main File
+02.gann.cpp:			Geeks Artificial Neural Network (Module)
+03.gneuron.cpp:			Geeks Neuron (Module)
+04.gsocket.cpp:			Geeks Socket (Module)
+05.gnms.cpp:			Geeks Simulator (Function)
+06.gsnmc.cpp:			Geeks Socket And Map Creator (Function)
+07.gerrc.cpp:			Geeks Error Corection (Function)
+08.gerrstat.cpp:		Geeks Error Statistics (Function)
+09.ggendata.cpp:		Geeks Generate Random Data (Function)
+10.grmc.cpp:			Geeks Runtime Manager Console (Function)
+11.gdmloader.cpp:		Geeks GIOD And GMap Loader (Function)
+12.greaddata.cpp:		Geeks Read Data From GKDB (Function)
+13.gsavedata.cpp:		Geeks Save Data To GKDB (Function)
+14.gremdata.cpp:		Geeks Remove Data From GKDB (Function)
+15.grand.cpp:			Geeks Randomizer (Function)
+16.gsleep.cpp:			Geeks Delay - Sleep (Function)
+17.gexit.cpp:			Geeks Exit (Function)
+
+
+
+[src/headers/] - H Files
+01.gglobdec.h:			Geeks Global Declarations
+02.gmain.h:			Geeks Main File
+03.gann.h:			Geeks Artificial Neural Network (Module)
+04.gneuron.h:			Geeks Neuron (Module)
+05.gsocket.h:			Geeks Socket (Module)
+06.gnms.h:			Geeks Simulator (Function)
+07.gsnmc.h:			Geeks Socket And Map Creator (Function)
+08.gerrc.h:			Geeks Error Corection (Function)
+09.gerrstat.h:			Geeks Error Statistics (Function)
+10.ggendata.h:			Geeks Generate Random Data (Function)
+11.grmc.h:			Geeks Runtime Manager Console (Function)
+12.gdmloader.h:			Geeks GIOD And GMap Loader (Function)
+13.greaddata.h:			Geeks Read Data From GKDB (Function)
+14.gsavedata.h:			Geeks Save Data To GKDB (Function)
+15.gremdata.h:			Geeks Remove Data From GKDB (Function)
+16.grand.h:			Geeks Randomizer (Function)
+17.gsleep.h:			Geeks Delay - Sleep (Function)
+18.gexit.h:			Geeks Exit (Function)
+
+
+
+------------------------------------------------------------------------------
+			*** G.A.N.N Requirements ***
+------------------------------------------------------------------------------
+
+G.A.N.N has a few minimum requirements.
+
+C.P.U:			80486 (Pentium Recomended)
+R.A.M:			4 MB (8 MB Recomended)
+HARD DISK:		8 MB (16 MB Recomended)
+
+Theoritically G.A.N.N should run on any kind of system that runs Unix,Linux,
+BSD and MacOS,with some changes,as long as it doesn't make use of any specific
+driver or device.
+
+------------------------------------------------------------------------------
