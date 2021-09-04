@@ -1,8 +1,7 @@
-/* 
-
+/*
    Geeks Artificial Neural Network (G.A.N.N) - Error Statistics
    
-   Copyright (C) 2008 George Delaportas (qtgeo)
+   Copyright (C) 2008 - 2021 George Delaportas (G0D/ViR4X)
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +17,6 @@
    along with this program. If not, see <http://www.gnu.org/licenses/>.
    
    E-Mail: g.delaportas@gmail.com
-
 */
 
 
@@ -38,60 +36,48 @@
 //Geeks Error Statistics (Function)
 float GErrStat(float *FirstData, float *LastData, float *AltData, int StatType)
 {
-
     //Variables
-    int i;					//Counter
-    int Faults;					//Faults Counter
-    float OK, Error;				//OK And Error Values (%)
-    
+    int i;                      //Counter
+    int Faults;                 //Faults Counter
+    float OK, Error;            //OK And Error Values (%)
+
     //Reset Statistics
     OK = 0.0;
     Error = 0.0;
-    
+
     //Reset Faults Counter
     Faults = 0;
-    
+
     //Check Statistics Type
     if (StatType < 0 OR StatType > 1)
         GExit("Error: Wrong Statistics Type Specified!\n", 1);
-    
+
     if (StatType == 0)
     {
-    
         for (i = 0; i < Outputs; i++)
         {
-        
             if (FirstData[i] != LastData[i])
                 Faults++;
-        
         }
-    
     }
-    
     else
     {
-    
         for (i = 0; i < Outputs; i++)
         {
-	
-	    if (LastData[i] < OutSocket.GetPV(i, 0)\
-	    OR AltData[i] > OutSocket.GetPV(i, 1))
-	    	Faults++;
-        
-	}
-    
+	        if (LastData[i] < OutSocket.GetPV(i, 0) OR AltData[i] > OutSocket.GetPV(i, 1))
+                Faults++;
+	    }
     }
-    
+
     //Statistics (%)
     OK = ((Outputs - Faults) / Outputs) * 100.0;
     Error = 100.0 - OK;
-    
+
     //User Messages
     printf("Correct: %f%%\n", OK);
     printf("Error: %f%%\n\n", Error);
-    
-    return Error;
 
+    return Error;
 }
 
 #endif

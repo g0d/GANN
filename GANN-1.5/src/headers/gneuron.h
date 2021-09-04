@@ -1,8 +1,7 @@
-/* 
-
+/*
    Geeks Artificial Neural Network (G.A.N.N) - Neuron
    
-   Copyright (C) 2008 George Delaportas (qtgeo)
+   Copyright (C) 2008 - 2021 George Delaportas (G0D/ViR4X)
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +17,6 @@
    along with this program. If not, see <http://www.gnu.org/licenses/>.
    
    E-Mail: g.delaportas@gmail.com
-
 */
 
 
@@ -29,12 +27,11 @@
 //Geeks Neuron (Class - Model)
 class GNeuron
 {
-
     private:
-    
+
     //Private Variables
-    int NFT;					//Neuron Function Type
-    int Counter;				//A Counter
+    int NFT;                    //Neuron Function Type
+    int Counter;                //A Counter
     int ISPins;					//InSlot Pins
     float Out;					//GNeuron Output
     float *InSlot;				//Inputs Slot (Data Inputs)
@@ -42,62 +39,61 @@ class GNeuron
     float Summary;				//A Summary
     float Base;					//Functions Base
     float SigFunc;				//Sigmoid Function Results
-    
+
     //Randmomize Weights
     void RandWeights();
-    
+
     //Sum Up
     void Sum();
-    
+
     //Neuron Function
     void NFunc(int FType);
-    
-    
-    
+
+
+
     public:
-    
+
     //Constructor
     GNeuron();
-    
+
     //Destructor
     ~GNeuron();    
-    
+
     //Modulo
     float Mod;
-    
+
     //Enable Neuron
     void Enable(int NFType);
-    
+
     //Run Neuron
     void Run(int NFType);
-    
+
     //Input Data
     void InData(int InputPin, float Data);
-    
+
     //Output Data
     float OutData();
-    
+
     //Set Neuron Function Type
     void SetNFT(int NewNFT);
-    
+
     //Set Weights
     void SetWeights(int WPin, float Weight);
-    
+
     //Get Neuron Function Type
     int GetNFT();
-    
+
     //Get Sum
     float GetSum();
-    
+
     //Get Base
     float GetBase();
-    
+
     //Get Input Slot Pins
     int GetISPins();
-    
+
     //Get Weights
     float GetWeights(int WIndex);
-
 };
 
 #endif

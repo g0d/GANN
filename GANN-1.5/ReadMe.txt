@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------
-		        Geeks Artificial Neural Network
-		    		  (G.A.N.N)
+		        		Geeks Artificial Neural Network
+		    		  			  (G.A.N.N)
 ------------------------------------------------------------------------------
 
 	   * This Text File Contains The Latest Updates On G.A.N.N *
@@ -19,9 +19,6 @@ Version 1.5
 - Geeks Sockets and Neural Map Creator (Upgrade)
 - Geeks Inputs Distribution Step Reader (Construction)
 - Geeks Knowledge Data Base (Construction)
-- GReadData, GSaveData and GRemData (Deletion)
-- Description For Each Registration (Construction)
-- Registration Serial Number (Integrate to GKDB)
 - GKDB Folder (Construction)
 - Speed Optimizations
 
@@ -36,6 +33,8 @@ Version 1.4
 - Geeks Socket (Upgrade)
 - Geeks Randomizer (Windows Randomness Fix)
 - Geeks Generate Data (Fix - Upgrade)
+- GReadData, GSaveData and GRemData (Deletion)
+- Registration Serial Number (Integrate to GKDB)
 - Minor Bug Fixes
 - Speed Optimizations
 - Installation System (Reconstruction)

@@ -1,8 +1,7 @@
-/* 
-
+/*
    Geeks Artificial Neural Network (G.A.N.N) - Main
    
-   Copyright (C) 2008 George Delaportas (qtgeo)
+   Copyright (C) 2008 - 2021 George Delaportas (G0D/ViR4X)
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +17,6 @@
    along with this program. If not, see <http://www.gnu.org/licenses/>.
    
    E-Mail: g.delaportas@gmail.com
-
 */
 
 
@@ -39,20 +37,20 @@
 #include "headers/gexit.h"
 
 //Initiate Global Variables
-int SimNum;                      		//Simulations Number
-int ECT;                         		//Error Correction Type
-int Inputs, Outputs;             		//GSockets I/O
-int RegSerNum;                   		//Registration Serial Number
-int UserInp;                     		//User Inputs (GRMC)
-long Offset;                     		//GHT Offset
-float GMinData[MAX_PIN];         		//Minimum Data
-float GMaxData[MAX_PIN];         		//Maximum Data
-float UserVal[MAX_PIN];          		//User Values
-float Steps[MAX_PIN];				//GSocket - GPins Steps
+int SimNum;                         //Simulations Number
+int ECT;                            //Error Correction Type
+int Inputs, Outputs;                //GSockets I/O
+int RegSerNum;                      //Registration Serial Number
+int UserInp;                        //User Inputs (GRMC)
+long Offset;                        //GHT Offset
+float GMinData[MAX_PIN];            //Minimum Data
+float GMaxData[MAX_PIN];            //Maximum Data
+float UserVal[MAX_PIN];             //User Values
+float Steps[MAX_PIN];               //GSocket - GPins Steps
 
 //GSockets
-GSocket InSocket;                		//Inputs GSocket
-GSocket OutSocket;               		//Outputs GSocket
+GSocket InSocket;                   //Inputs GSocket
+GSocket OutSocket;                  //Outputs GSocket
 
 //New G.A.N.N
 GANN NewGANN;
@@ -63,10 +61,9 @@ GKDB NewGKDB;
 //Main Function
 int main(int argc, char **argv)
 {
-
     //Variables
-    int i;					//Simple Counter
-    
+    int i;              //Simple Counter
+
     //Graphical Menu
     printf("-------------------------\n");
     printf("******   G.A.N.N   ******\n");
@@ -74,7 +71,7 @@ int main(int argc, char **argv)
     printf("       Version 1.5       \n");
     printf("=========================\n");
     printf("George Delaportas\n");
-    printf("Copyright (C) 2008\n");
+    printf("Copyright (C) 2008 - 2021\n");
     printf("=========================\n\n");
     printf("Please Select An Option\n");
     printf("1.Create A Feed-Forward G.A.N.N (Normal Systems)\n");
@@ -85,125 +82,103 @@ int main(int argc, char **argv)
     printf("6.Remove Registrations From GKDB\n");
     printf("7.Exit\n");
     printf("Choice: ");
-    
+
     scanf("%i", &i);
-    
+
     printf("\n");
-    
+
     //Check Choices
     if (i == 1)    
     {
-    
         //Create New G.A.N.N
         GSNMC();
-        
+
         printf("Loading Data...\n");
-        
+
         //Load GIOD And GMap Data
         GDMLoader();
-        
+
         printf("Done!\n\n");
-        
+
         //Simulate G.A.N.N At Learning Mode
         GNMS(0, 0);
-    
     }
-    
     else if (i == 2)
     {
-    
         //Create New G.A.N.N
         GSNMC();
-        
+
         printf("Loading Data...\n");
-        
+
         //Load GIOD And GMap Data
         GDMLoader();
-        
+
         printf("Done!\n\n");
-        
+
         //Simulate G.A.N.N At Learning Mode
         GNMS(0, 1);
-    
     }
-    
     else if (i == 3)
     {
-    
         //Simulate G.A.N.N At Running Mode
         GNMS(1, 0);
-    
     }
-    
     else if (i == 4)
     {
-    
         //Create New G.A.N.N
         GSNMC();
-        
+
         printf("Loading Data...\n");
-        
+
         //Load GIOD And GMap Data
         GDMLoader();
-        
+
         printf("Done!\n\n");
-        
+
         //Simulate G.A.N.N At Learning Mode
         GNMS(0, 0);
-        
+
         //Simulate G.A.N.N At Running Mode
         GNMS(1, 0);
-    
     }
-    
     else if (i == 5)
     {
-    
         //Create New G.A.N.N
         GSNMC();
-        
+
         printf("Loading Data...\n");
-        
+
         //Load GIOD And GMap Data
         GDMLoader();
-        
+
         printf("Done!\n\n");
-        
+
         //Simulate G.A.N.N At Learning Mode
         GNMS(0, 0);
-        
+
         //Simulate G.A.N.N At Running Mode
         GNMS(1, 1);
-    
     }
-    
     else if (i == 6)
     {
-    
         //Remove Specified Registration
         GRMC(1);
-        
+
         printf("Done!\n");
-    
     }
-    
     else if (i == 7)
     {
-    
         printf("Thank You For Using G.A.N.N\n");
         printf("Goodbye!\n");
-        
+
         GExit("", 0);
-    
     }
-    
     else
         GExit("Error: Wrong Choice Specified!\n", 1);
-    
-    GExit("", 0);
-    
-    return 0;
 
+    GExit("", 0);
+
+    return 0;
 }
 
 #endif

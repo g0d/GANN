@@ -1,8 +1,7 @@
-/* 
-
+/*
    Geeks Artificial Neural Network (G.A.N.N) - Inputs Distribution Step Reader
    
-   Copyright (C) 2008 George Delaportas (qtgeo)
+   Copyright (C) 2008 - 2021 George Delaportas (G0D/ViR4X)
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +17,6 @@
    along with this program. If not, see <http://www.gnu.org/licenses/>.
    
    E-Mail: g.delaportas@gmail.com
-
 */
 
 
@@ -36,14 +34,12 @@
 //Geeks Inputs Distribution Step Reader (Function)
 float GIDSR(GSocket &ShadowSocket, int Pin, float Step)
 {
-
     //Variable
     float Result;				//Current Result
-    
-    Result = ShadowSocket.GetPV(Pin, 0) + Step;
-    
-    return Result;
 
+    Result = ShadowSocket.GetPV(Pin, 0) + Step;
+
+    return Result;
 }
 
 #endif
