@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------
-		        		Geeks Artificial Neural Network
-		    		  			  (G.A.N.N)
+		        Geeks Artificial Neural Network
+		    		  (G.A.N.N)
 ------------------------------------------------------------------------------
 
 	   * This Text File Contains The Latest Updates On G.A.N.N *
