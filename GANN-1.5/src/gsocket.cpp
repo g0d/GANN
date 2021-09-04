@@ -112,25 +112,21 @@ void GSocket::SetPS(int Pin, int PinState)
 //Set Pin Single Value Or Values With Range
 void GSocket::SetPV(int Pin, float Val1, float Val2)
 {
-
-    //Check Socket Pins And Values
+	//Check Socket Pins And Values
     if (Pin < 0 OR Pin > SockPins)
         GExit("Error: Wrong Pin Specified!\n", 1);
-    
-    if (Pins[Pin].Type == 1 AND Val2 < Val1)
+
+    if (Pins[Pin].Type == 1 AND Val2 < Val1 AND Val2 > PIN_VAL2_DEFAULT)
         GExit("Error: Wrong Range Specified!\n", 1);
-    
+
     if (Pins[Pin].Type == 0)
     {
-    
         if (Val1 < 0.0 OR ((Val1 > 0.0 AND Val1 < 1.0)) OR Val1 > 1.0)
             GExit("Error: Not A Binary Number!\n", 1);
-    
     }
-    
-    Pins[Pin].MinVal = Val1;
-    Pins[Pin].MaxVal = Val2;
 
+	Pins[Pin].MinVal = Val1;
+	Pins[Pin].MaxVal = Val2;
 }
 
 //Get Socket Type (I/O)
@@ -162,7 +158,6 @@ int GSocket::GetPT(int Pin)
 
 //Get Pin State
 int GSocket::GetPS(int Pin)
-
 {
 
     if (Pin < 0 OR Pin > SockPins)

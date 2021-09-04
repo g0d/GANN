@@ -47,54 +47,53 @@
 //Geeks Neural Map Simulator (Function)
 void GNMS(int SimFunc, int SimMode)
 {
-
     //Variables
     register int i, j;				//Fast Counters
-    int n, k, p;				//Simple Counters
-    int StartLayer;				//Starting Layer
-    int EpC;					//Epochs Counter
-    int GNC;					//GNeurons Counter
-    int LHP;					//Layer Head Pointer
-    int LEP;					//Layer End Pointer
-    int LHT;					//Layer Head Temp
-    int GNFT;					//GNeuron Function Type
-    int RSN;					//Registration Serial Number
-    int Sims;					//Simulations Number
-    float *NewData;				//New Data From Inputs GSocket
-    NewData = new float[MAX_PIN];
-    float AccErr;				//Acceptable Error (%)
-    float GErr;					//G.A.N.N Error (%)
+    int n, k, p;					//Simple Counters
+    int StartLayer;					//Starting Layer
+    int EpC;						//Epochs Counter
+    int GNC;						//GNeurons Counter
+    int LHP;						//Layer Head Pointer
+    int LEP;						//Layer End Pointer
+    int LHT;						//Layer Head Temp
+    int GNFT;						//GNeuron Function Type
+    int RSN;						//Registration Serial Number
+    int Sims;						//Simulations Number
+    float *NewData;					//New Data From Inputs GSocket
+    float AccErr;					//Acceptable Error (%)
+    float GErr;						//G.A.N.N Error (%)
     float GMin, GMax;				//Min,Max Values
-    float Tmp;					//Temporary Float Values
-    FILE *FileToCheck;				//A File Pointer
-    
+    float Tmp;						//Temporary Float Values
+
+    FILE *FileToCheck;				//A File Pointer    
+    NewData = new float[MAX_PIN];	//New Data Initialization
+
     //Check For Wrong Simulation Function
     if (SimFunc < 0 OR SimFunc > 2)
         GExit("Error: Wrong Simulation Function Specified!\n", 1);
-    
+
     //Check For Wrong Simulation Function
     if (SimMode < 0 OR SimMode > 1)
         GExit("Error: Wrong Simulation Mode Specified!\n", 1);
-    
+
     //Reset Registration Serial Number
     RegSerNum = 0;
     RSN = 0;
-    
+
     //Learn
     if (SimFunc == 0)
     {
-    
         //Get I/O From GSockets Loaded In Memory
         Inputs = InSocket.GetPins();
         Outputs = OutSocket.GetPins();
-        
+
         //Compute Acceptable Error
         AccErr = 100.0 - NewGANN.LearnTH;
-        
+
         //Fill NData With Inputs GSocket Data (Only For Uniform Checks)
         for (i = 0; i < Inputs; i++)
             NewData[i] = InSocket.GetPV(i, 0);
-        
+
         //Check GMap Simulation Type So As To Set GNeurons Function Type
         if (NewGANN.GMSType == 0)
             GNFT = 0;
@@ -102,46 +101,40 @@ void GNMS(int SimFunc, int SimMode)
             GNFT = 1;
         else
             GNFT = 2;
-        
+
         //Print Inputs GSocket
         printf("----- Inputs GSocket -----\n\n");   
-        
+
         for (i = 0; i < Inputs; i++)
         {
-        
             printf("[GPin: %i]\n", i + 1);
             printf("Minimum Value: %f\n", InSocket.GetPV(i, 0));
-            
-	    if (InSocket.GetPT(i) == 0)
-		printf("Maximum Value: N/A\n\n");
-	    
-	    else
-	    {
-	    
-            	if (InSocket.GetPV(i, 0) == InSocket.GetPV(i, 1))
-                    printf("Maximum Value: N/A\n\n");
-            	else
-                    printf("Maximum Value: %f\n\n", InSocket.GetPV(i, 1));
-            
-	    }
-	
+
+			if (InSocket.GetPT(i) == 0)
+				printf("Maximum Value: N/A\n\n");
+			else
+			{
+		    	if (InSocket.GetPV(i, 1) == PIN_VAL2_DEFAULT)
+		            printf("Maximum Value: N/A\n\n");
+		    	else
+		            printf("Maximum Value: %f\n\n", InSocket.GetPV(i, 1));
+			}
         }
-        
+
         printf("--------------------------\n\n");
-        
+
         //Start Simulation
         printf("Learning...\n");
-        
+
         //Simulations Loop
         for (n = 0; n < SimNum; n++)
         {
-        
             //Create New Geeks Network In Memory (G.A.N.N Matrix)
             GNeuron *GNet;
             GNet = new GNeuron[MAX_MATRIX];
-            
+
             printf("\n* Simulation %i *\n\n", n + 1);
-            
+
 	    //Reset Starting Layer
 	    StartLayer = 0;
 	    
@@ -232,7 +225,7 @@ void GNMS(int SimFunc, int SimMode)
                         //Get Data From Previous Layer
                         else
                         {
-                        printf("LHP: %i     LEP: %i     k: %i\n\n", LHP, LEP, k);
+                        //printf("LHP: %i     LEP: %i     k: %i\n\n", LHP, LEP, k);
 			    //Give Data To This GNeuron
                             for (p = LHP; p < (LHP + LEP); p++)
                             	GNet[GNC].InData(p - LHP, GNet[p].OutData());
@@ -274,23 +267,27 @@ void GNMS(int SimFunc, int SimMode)
             {
             
                 GMinData[j] = GNet[i].OutData() * OutSocket.GetPV(j, 0);
-                GMaxData[j] = GNet[i].OutData() * OutSocket.GetPV(j, 1);
-                
+
+				if (OutSocket.GetPV(j, 1) == PIN_VAL2_DEFAULT)
+					GMaxData[j] = 0.0;
+				else
+                	GMaxData[j] = GNet[i].OutData() * OutSocket.GetPV(j, 1);
+
                 printf("[GPin %i]\n", j + 1);
                 printf("Min: %f\n", GMinData[j]);
 		
-		if (OutSocket.GetPT(j) == 0)
-		    printf("Max: N/A\n\n");
-		
-		else
-                {
-		
-		    if (GMinData[j] == GMaxData[j])
-		    	printf("Max: N/A\n\n");
-		    else
-		    	printf("Max: %f\n\n", GMaxData[j]);
-                
-		}
+				if (OutSocket.GetPT(j) == 0)
+					printf("Max: N/A\n\n");
+				
+				else
+				{
+				
+					if (GMinData[j] == GMaxData[j] OR GMaxData[j] == 0.0)
+						printf("Max: N/A\n\n");
+					else
+						printf("Max: %f\n\n", GMaxData[j]);
+				        
+				}
 		
                 j++;
             
@@ -314,14 +311,14 @@ void GNMS(int SimFunc, int SimMode)
                     
                         //Produce A Registration Serial Number
                         RegSerNum = abs((int)GGenData(0, 0.0,\
-			(Inputs + Outputs) * (GNC + 1) *\
-			EpC * SimNum * time(NULL)));
-                        
-			//Fixate Less Digits
-			while (RegSerNum < 1000000000)
-			    RegSerNum += 999;
-                        
-			//Initialize GSims
+						(Inputs + Outputs) * (GNC + 1) *\
+						EpC * SimNum * time(NULL)));
+						            
+						//Fixate Less Digits
+						while (RegSerNum < 1000000000)
+							RegSerNum += 999;
+						
+						//Initialize GSims
                         FileToCheck = fopen("GKDB/GSims", "a");
                         
                         //Save Registration Serial Number
@@ -343,23 +340,18 @@ void GNMS(int SimFunc, int SimMode)
                     
                     for (i = 0; i < Outputs; i++)
                     {
-                    
                         printf("[GPin: %i]\n", i + 1);
                         printf("Minimum Value: %f\n", GMinData[i]);
-            		
-			if (OutSocket.GetPT(i) == 0)
-			    printf("Maximum Value: N/A\n\n");
-			
-			else
-			{
-			
-                            if (GMinData[i] == GMaxData[i])
-                            	printf("Maximum Value: N/A\n\n");
-                            else
-                            	printf("Maximum Value: %f\n\n", GMaxData[i]);
-                    	
-			}
-		    
+
+						if (OutSocket.GetPT(i) == 0)
+							printf("Maximum Value: N/A\n\n");
+						else
+						{
+			                if (GMinData[i] == GMaxData[i] OR GMaxData[i] == 0.0)
+			                	printf("Maximum Value: N/A\n\n");
+			                else
+			                	printf("Maximum Value: %f\n\n", GMaxData[i]);
+						}
                     }
                     
                     printf("---------------------------\n\n");
@@ -385,9 +377,9 @@ void GNMS(int SimFunc, int SimMode)
 			{
 			
 			    if (NewGANN.GMSType == 0 OR NewGANN.GMSType == 1)
-				GErrC(GNet, i, GErr, 1);
+					GErrC(GNet, i, GErr, 1);
 			    else
-				GErrC(GNet, i, GErr, 0);
+					GErrC(GNet, i, GErr, 0);
                         
 			}
                     	
@@ -554,7 +546,7 @@ void GNMS(int SimFunc, int SimMode)
                     //Run This GNeuron
                     GNet[GNC].Run(GNFT);
 		    
-		    printf("\n");
+		    		printf("\n");
                 
                 }
                 
@@ -584,23 +576,13 @@ void GNMS(int SimFunc, int SimMode)
         //Print G.A.N.N Values
         for (i = LHP; i < (LHP + LEP); i++)
         {
-        
             printf("[GPin %i]\n", i - LHP + 1);
             printf("Min: %f\n", GNet[i].OutData() * GMinData[i - LHP]);
-	    
-	    if (OutSocket.GetPT(i - LHP) == 0)
-		printf("Max: N/A\n\n");
-	    
-	    else
-	    {
-	    
-            	if (GMinData[i - LHP] == GMaxData[i - LHP])
-		    printf("Max: N/A\n\n");
-	    	else
-		    printf("Max: %f\n\n", GNet[i].OutData() * GMaxData[i - LHP]);
-	    
-	    }
-	
+
+			if (GMaxData[i - LHP] == 0 OR GMinData[i - LHP] == GMaxData[i - LHP] OR GMaxData[i - LHP] == PIN_VAL2_DEFAULT)
+				printf("Max: N/A\n\n");
+			else
+				printf("Max: %f\n\n", GNet[i].OutData() * GMaxData[i - LHP]);
         }
         
         printf("------------------------\n\n");
@@ -673,10 +655,9 @@ void GNMS(int SimFunc, int SimMode)
 
     else
         GExit("Error: Wrong Function Specified!\n", 1);
-    
+
     //Clean Up
     delete []NewData;
-
 }
 
 #endif

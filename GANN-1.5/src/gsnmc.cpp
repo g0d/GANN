@@ -99,7 +99,7 @@ void GSNMC()
     for (j = 0; j < i; j++)
     {
     
-	m = -999999.999999;
+		m = PIN_VAL2_DEFAULT;
 	
         printf("GPin %i\n", j + 1);
         
@@ -110,7 +110,7 @@ void GSNMC()
             
             scanf("%f", &n);
             
-	    printf("\n");
+	    	printf("\n");
 	    
             InSocket.SetPV(j, n, 0.0);
         
@@ -122,10 +122,10 @@ void GSNMC()
             printf("Choice (Min, Max) [Real]: ");
             
             scanf("%f,%f", &n, &m);
-            
-	    printf("\n");
-	    
-	    InSocket.SetPV(j, n, m);
+		    
+			printf("\n");
+			
+			InSocket.SetPV(j, n, m);
             
     	    printf("Now Set Step For GPin %i\n", j + 1);
     	    printf("(Min: 0.000001, Max: 1.0)\n\n");
@@ -193,9 +193,9 @@ void GSNMC()
     for (j = 0; j < i; j++)
     {
     
-	m = -999999.999999;
-	
-	printf("GPin %i\n", j + 1);
+		m = PIN_VAL2_DEFAULT;
+		
+		printf("GPin %i\n", j + 1);
         
         if (OutSocket.GetPT(j) == 0)
         {
@@ -309,7 +309,7 @@ void GSNMC()
                 {
                 
                     if (InSocket.GetPV(i, 1) == OutSocket.GetPV(i, 1))
-			ECT = 0;
+						ECT = 0;
 		
                 }
                 
@@ -602,7 +602,7 @@ void GSNMC()
     fclose(FileToOpen);
     
     printf("\nOptimized GMap Has:\n");
-    printf("%i Layers\n%i GNeuron(s)\n\n", NewGANN.Layers, NewGANN.GNNum);
+    printf("%i Layer(s)\n%i GNeuron(s)\n\n", NewGANN.Layers, NewGANN.GNNum);
     
     //Clean Up
     delete []APT;

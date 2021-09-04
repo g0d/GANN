@@ -36,21 +36,17 @@
 //Geeks Sleep (Function)
 void GSleep(int Sec)
 {
-
     //Variables
     time_t Go;					//Time Variable
-    
+
     time(&Go);
     Sec += Go;
-    
+
     while (Go < Sec)
     {
-    
         //Get Current Time
-        time(&Go);
-    
+        time(&Go);   
     }
-
 }
 
 #endif

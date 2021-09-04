@@ -177,7 +177,6 @@ void GNeuron::Run(int NFType)
 
 //Input Data
 void GNeuron::InData(int InputPin, float Data)
-
 {
 
     InSlot[InputPin] = Data;
@@ -190,7 +189,6 @@ void GNeuron::InData(int InputPin, float Data)
 
 //Output Data
 float GNeuron::OutData()
-
 {
 
     return Out;
@@ -199,7 +197,6 @@ float GNeuron::OutData()
 
 //Set Neuron Function Type
 void GNeuron::SetNFT(int NewNFT)
-
 {
 
     NFT = NewNFT;
@@ -208,7 +205,6 @@ void GNeuron::SetNFT(int NewNFT)
 
 //Set Weights
 void GNeuron::SetWeights(int WPin, float Weight)
-
 {
 
     Weights[WPin] = Weight;
@@ -217,7 +213,6 @@ void GNeuron::SetWeights(int WPin, float Weight)
 
 //Get Neuron Function Type
 int GNeuron::GetNFT()
-
 {
 
     return NFT;
@@ -226,7 +221,6 @@ int GNeuron::GetNFT()
 
 //Get Sum
 float GNeuron::GetSum()
-
 {
 
     return Summary;
@@ -235,7 +229,6 @@ float GNeuron::GetSum()
 
 //Get Base
 float GNeuron::GetBase()
-
 {
 
     return Base;
@@ -244,7 +237,6 @@ float GNeuron::GetBase()
 
 //Get Input Slot Pins
 int GNeuron::GetISPins()
-
 {
 
     return ISPins;
@@ -253,7 +245,6 @@ int GNeuron::GetISPins()
 
 //Get Weights
 float GNeuron::GetWeights(int WIndex)
-
 {
 
     return Weights[WIndex];

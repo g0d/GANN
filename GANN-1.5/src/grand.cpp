@@ -38,13 +38,11 @@
 //Geeks Data Randomizer (Function)
 void GRand()
 {
-
     //Delay
     GSleep(1);
-    
-    //Set New Seed
-    srand(time(NULL));
 
+    //Set New Seed
+	srand(time(NULL));
 }
 
 #endif

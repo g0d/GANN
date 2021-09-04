@@ -40,10 +40,10 @@ void GDMLoader()
 {
 
     //Variables
-    int i;					//Counter
+    int i;						//Counter
     float Val;					//A Float Value
     float Tmp;					//Temp Values
-    FILE *FileToOpen;				//A File Pointer
+    FILE *FileToOpen;			//A File Pointer
     
     //Initialize GIOD
     FileToOpen = fopen("GKDB/GIOD", "r");
@@ -66,7 +66,7 @@ void GDMLoader()
         
         fscanf(FileToOpen, "%f\n", &Val);
         if (InSocket.GetPT(i) == 0)
-            InSocket.SetPV(i ,Val, 0.0);
+            InSocket.SetPV(i, Val, 0.0);
         else
             InSocket.SetPV(i, Val, Val + 1);
         
