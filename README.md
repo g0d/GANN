@@ -11,4 +11,4 @@ G.A.N.N is the precursor and basis of:
 4. Dynamic computation graphs
 5. Heuristic-Based Layer Management
 
-Actually, GANN is not just another ANN but rather a framework that creates and trains this new ANN automatically based on certain criteria and mathematical models that were invented explicitly for this purpose.
+Actually, GANN is not just another ANN but rather a framework that creates and trains this new ANN automatically - no core is required - based on certain criteria and mathematical models that were invented explicitly for this purpose.
