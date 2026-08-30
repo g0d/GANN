@@ -12,3 +12,8 @@ G.A.N.N is the precursor and basis of:
 5. Heuristic-Based Layer Management
 
 Actually, GANN is not just another ANN but rather a framework that creates and trains this new ANN automatically - no code is required - based on certain criteria and mathematical models that were invented explicitly for this purpose.
+
+George Delaportas (G0D/ViR4X)  
+Copyright (C) 2006 - 2026 G.A.N.N  
+Business Source License (BSL-1.1)  
+Supports part of the core Vision AI infrastructure of [PROBOTEK](https://probotek.eu/) under a licensed scheme
